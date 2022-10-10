@@ -1,0 +1,28 @@
+{%assign product_id = '' %}
+{%assign product_type= '' %}
+{% section 'product-template' %}
+{%- include 'size-chart'-%}
+{%- if product.metafields.product_pair.pair != blank -%}
+	{% section 'pair-products' %}
+{%- endif -%}
+{%- section 'product-recommendations' -%}
+{%- section 'recently-viewed-products' -%}
+{%- include 'product-review' -%}
+{% comment %}{%- section 'customer-testimonials' -%}{% endcomment %}
+{%- include 'similar-collection-products' -%}
+
+<script>
+    
+  dataLayer.push({
+    'event': 'view_item',
+    'ecommerce': {
+    'items': [
+      {
+      'item_name': '{{ product.title | escape }}',
+      'item_id': '{{ product.id }}',
+      'sku' :'{{ product.selected_or_first_available_variant.sku }}'
+      }]
+      }
+   });
+  
+</script>

@@ -1,0 +1,33 @@
+<!-- check all sizes available or not -->
+	{% comment %}
+	  {%- assign product_available = true -%}
+      {%- if product.type != 'Face Mask' and product.type != 'Jeans' -%}
+        {% for variant in product.variants %}
+          {% unless variant.available %}
+            {% assign product_available = false %}
+          {% endunless %}
+        {% endfor %}
+      {%- endif -%}
+	{% endcomment %}
+
+	{%- if product.type != 'Face Mask' and product.type != 'Jeans' and product.type != 'Belt' and product.type != 'Accessories' and product.type != 'Tshirt' and product.type != 'Wallet' and product.type != 'Footwear' -%}
+       {%- if product.variants.last.available -%}
+		<div class="customize_product_text" style="margin-top: 10px;">
+          <b>Customization is possible in this item</b>
+          <ul>
+              <li>Customization is possible for Prepaid Orders Only. Customization is not Possible for COD orders.</li>
+            <li>You can place the order and then mail us <b style="color: darkgreen">within 24 Hours</b> at <a href="mailto:contact@frenchcrown.com" style="color: blue;">contact@frenchcrown.com</a> with order number and your custom requirements. We will customize it and then dispatch.</li>
+            <li>There is no extra cost of customization.</li>
+            {%- if product.type == 'Suit' or product.type == 'Blazer' or product.type == 'Trenchcoat Suit' or product.type == 'Trenchcoat' %}
+              <li>Customized Products will be shipped within 7 to 10 working days of placing the order.</li>
+            {% else %}
+              <li>Customized Products will be shipped within 3 to 4 working days of placing the order.</li>
+            {% endif %}
+          </ul>
+         </div>
+      {% else %}
+          <div class="customize_product_text" style="margin-top: 10px;">
+            <b>Customization is <strong>NOT</strong> possible in this item</b>
+         </div>
+      {%- endif -%}
+	{%- endif -%}

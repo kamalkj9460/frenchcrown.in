@@ -1,0 +1,54 @@
+ <div class="modal modal-size">
+  <div class="modal-inner">
+    <div class="modal-close">
+     
+    </div>
+    <div class="modal-buttons">
+      <a class="Button-primary modal-button button-in active" href="#"> inches</a>
+      <a class="Button-primary modal-button button-cm" href="#">cm</a>
+      <a class="close"> X </a>
+    </div>
+    {%- if product.type == 'Shirt' -%}
+    	{%- include 'shirt-size'-%}
+    {%- elsif product.type == 'Suit' or product.type == 'Blazer' -%}
+    	{%- include 'blazer-size'-%}
+    {%- elsif product.type == 'Trenchcoat Suit' or product.type == 'Trenchcoat' -%}
+    	{%- include 'trenchcoat-size'-%}
+    {%- elsif product.type == 'Trousers'-%}
+    	{%- include 'trousers-size'-%}
+    {%- elsif product.type == 'Short'-%}
+    	{%- include 'shorts-size'-%}
+    {%- elsif product.type == 'Jeans'-%}
+    	{%- include 'jeans-size'-%}
+    {%- elsif product.type == 'Waistcoat'-%}
+    	{%- include 'waistcoat-size'-%}
+    {%- elsif product.type == 'Boxer'-%}
+    	{%- include 'boxer-size'-%}
+    {%- elsif product.type == 'Lounge Pant' -%}
+    	{%- include 'pajama-size'-%}
+    {%- elsif product.type == 'Belt' -%}
+    	{%- include 'belt-size'-%}
+    {%- elsif product.type == 'Tshirt' -%}
+    	{%- include 'tshirt-size'-%}
+    {%- elsif product.type == 'Footwear' -%}
+    	{%- include 'footwear-size'-%}
+    {%- elsif product.type == 'Kurta' -%}
+    	{%- include 'kurta-size'-%}
+  	{%- endif -%}
+  </div>
+</div>
+<div class="modal modal-size-trouser">
+  <div class="modal-inner">
+    <div class="modal-close">
+     
+    </div>
+    <div class="modal-buttons">
+      <a class="Button-primary modal-button button-in active" href="#"> inches</a>
+      <a class="Button-primary modal-button button-cm" href="#">cm</a>
+      <a class="close"> X </a>
+    </div>
+    {%- if product.type == 'Suit' or product.type == 'Trenchcoat Suit' -%}
+    	{%- include 'trousers-size'-%}    
+    {%- endif -%}
+  </div>
+</div>

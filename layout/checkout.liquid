@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+    
+    {{ content_for_header }}
+  
+    {{ checkout_stylesheets }}
+    {{ 'mm-checkout-style.scss.css' | asset_url | stylesheet_tag }}
+        
+    {{ checkout_scripts }}
+    <script>
+      window.$ = Checkout.$;
+    </script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ch82k1ozh0");
+    </script>
+
+  </head>
+  <body>
+    {{ skip_to_content_link }}
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            <a class="logo logo--center" href="https://frenchcrown.in/">
+              <img alt="French Crown" class="logo__image logo__image--large" src="{{ 'fc_logo_black.svg' | asset_url }}" width="350">
+            </a>
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+            <!--   popup start  -->
+            <div class='fc_overlay'></div>
+            <div class='fc_popupBox'>
+
+              <div class='fc_mainHead'>       
+                <div class='fc_popup-heading fc_center'>
+                  <img alt="French Crown" src="https://cdn.shopify.com/s/files/1/0094/6326/7379/files/REG_Website_logo_1c1801f4-9c4c-4c6e-9aeb-2c768501fd73_350x.png?v=1643605551">
+                </div>
+              </div> 
+        
+              <div class="cod-terms-section">
+                <div class='fc_mainContent fc_center'>
+                  <h3>COD terms & Conditions</h3>
+                  <div class='fc_product-contain'>
+                    <p>Placing "cash on delivery" order for fun and and refusing it at the time of delivery is a punishable cybercrime. Please place "cash on delivery" order only if you want to accept the parcel. </p>
+                    <p>We provide "cash on delivery" service in India only for customers' convenience, in all other countries, we accept only online payments. Please do not misuse this service.</p>
+                    <p>Open delivery is not available. Each parcel is Seal packed and they are having insurance to Protect it from Fraud. Under this insurance policy, no one can open it before paying the full order amount. Though we have 60 days "No Question Asked" Return policy, under which if you don't like the product then you can ask for refund or exchange. Customer care number: 9723325522 (Mon to Sat, 9:00 am to 6:00 pm)</p>
+                    <p>Card payment is not available in "cash on delivery" payment method. If you want to use card then pay online using 0ur online payment options.</p>
+                  </div>
+                </div>
+
+                <div class='fc_popup-footer'>
+                  <div class="fc_center">
+                    <button class='fc_back-btn accept-btn'>I accept</button>
+                    <button class="fc_back-btn" href="#" onclick="getDiscount()">Do Online Payment and get {{ checkout.total_price | times: 0.01 | round | money }} Off</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="alternate-mobile-no-section" style="display:none;">
+                <div class='fc_mainContent fc_center'>
+                  <h3>Add Alternate Mobile Number</h3>
+                  <input type="text" class="alternate-mobile-no" autofocus>
+                </div>
+
+                <div class='fc_popup-footer'>
+                  <div class="fc_center">
+                    <button class='fc_back-btn close-btn complete-order-btn'>Complete Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- popup end  -->
+          </main>
+
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+      {% if settings.enable_prepaid_discount %}
+        {% render 'marmeto-discount-v2' %}
+      {% endif %}
+    
+    {% comment %}
+      #Show COD Modal on form submit
+      - If COD Gateway is selected
+    {% endcomment %}
+    <script>
+      $(document).on('page:load page:change', function() {
+        if(Shopify.Checkout.step == "contact_information"){
+          if($(".section--contact-information").length > 0){
+            let html = '';
+            html=`<div data-contact-field="phone" class="field contact_phone">
+                        <div class="field__input-wrapper field__input-wrapper--icon-right" style="margin-bottom: 10px;"><label class="field__label field__label--visible" for="checkout_contact_phone">Phone(Optional)</label>
+                          <input placeholder="Phone" autocomplete="Contact tel" autocorrect="off" data-backup="phone" data-phone-formatter="true" data-phone-formatter-country-select="[name='checkout[phone]']" class="field__input field__input--numeric" size="30" type="tel" name="checkout[phone]" id="checkout_contact_phone">
+                        </div>
+                  </div>
+                  <div class="fieldset-description">
+                    <div class="section__content">
+                      <div class="checkbox-wrapper">
+                        <div class="checkbox__input">
+                          <input type="hidden" value="0" autocomplete="off" checked="checked">
+              <input class="input-checkbox" type="checkbox" value="1" checked="checked" id="smsOptIn">
+                        </div>
+                        <label class="checkbox__label" for="smsOptIn">
+                          Text me with news and offers
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+        `;
+            $(".section--contact-information .section__content .fieldset-description").after(html);
+            $(document).on('change','#smsOptIn', function(e){
+              if($(this).prop('checked')){
+                sessionStorage.setItem("sms_opt_in", true);
+              }else{
+                sessionStorage.removeItem("sms_opt_in");
+              }
+            });
+            sessionStorage.setItem("sms_opt_in", true);
+          }
+        }
+        
+        
+        if(Shopify.Checkout.step == "payment_method"){ 
+          var PaymentForm = $('form[data-payment-form]');
+
+          PaymentForm.on('submit', function() {
+            var CodInput = $('[data-select-gateway] .radio__label__primary:contains(COD)').parents('[data-select-gateway]').find('input');
+            var flag = true;
+
+            if(CodInput.is(':checked') && $('.is_old_customer').length == 0) {
+              $('.fc_overlay').show();
+              $('.fc_popupBox').show();
+              $('body').addClass('fc_body');
+              $('.cod-terms-section').show();
+              $('.alternate-mobile-no-section').hide();
+              flag = false;
+            }
+            return flag;
+          })
+
+          $(document).on('click','.close-btn', function(e){
+            var alternate_mobile_no = $.trim($('.alternate-mobile-no').val());
+            if (alternate_mobile_no != ''){
+              sessionStorage.setItem("alternate_mobile_no", alternate_mobile_no);
+            }
+            PaymentForm[0].submit();
+          })
+          
+          $(document).on('click','.accept-btn', function(e){
+            $('.cod-terms-section').hide();
+            $('.alternate-mobile-no-section').show();
+            $('.alternate-mobile-no').focus();
+          })
+
+          $(document).on('click', function(e){
+            if($(e.target).closest('.fc_popupBox').length != 0) return false;
+            $('.fc_overlay').hide();
+            $('.fc_popupBox').hide();
+            $('body').removeClass('fc_body');
+          });
+        }
+        
+        if(Shopify.Checkout.step == "thank_you" && sessionStorage.getItem("alternate_mobile_no")){
+          add_data = {
+            shopify_domain: 'french-crown-dress-sharp.myshopify.com',
+            alternate_mobile_no: sessionStorage.getItem("alternate_mobile_no"),
+            order_id: Shopify.checkout.order_id
+          }
+          $.ajax({
+            url: 'https://frenchcrownerp.com/api/v1/orders/add_alternative_mobile_no',
+            type: 'POST',
+            dataType: 'json',
+            data: add_data,
+          })
+          .done(function(response) {
+      console.log("response==>", response)
+          });
+        }
+        
+        if(Shopify.Checkout.step == "thank_you" && sessionStorage.getItem("sms_opt_in") && Shopify.checkout.customer_id){
+          $.ajax({
+            url: 'https://frenchcrownerp.com/api/v1/customers/add_sms_opt_in',
+            type: 'POST',
+            dataType: 'json',
+            data: {cid: Shopify.checkout.customer_id},
+          })
+          .done(function(response) {
+      console.log("response==>", response)
+          });
+        }
+        $('.radio-wrapper.content-box__row').each(function(){
+          if($(this).find('.radio__label .visually-hidden').text().indexOf('CCAvenue') > -1){
+            var abc= "Wallet / Credit Card / Debit Card / Net Banking / UPI / EMI";
+            $(this).find('.offsite-payment-gateway-logo').before('<p>'+abc+'</p>').hide();
+          }
+        })
+        
+        
+     //    if($(".thank-you__additional-content").length > 0 || Shopify.Checkout.step == "thank_you"){
+          
+     //      let flickityCSS = document.createElement("link");
+     //      flickityCSS.rel = "stylesheet";
+     //      flickityCSS.type = "text/css";
+     //      flickityCSS.href = "https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.min.css";
+     //      flickityCSS.media = 'all';
+     //      $("head").append(flickityCSS);
+          
+     //      let jqueryHeight = document.createElement("script");
+     //      jqueryHeight.type = "text/javascript";
+     //      jqueryHeight.src = "https://cdn.shopify.com/s/files/1/0094/6326/7379/t/112/assets/jquery-equal-height.min.js";
+     //      $("head").append(jqueryHeight);
+          
+     //      let flickityJS = document.createElement("script");
+     //      flickityJS.type = "text/javascript";
+     //      flickityJS.src = "https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js";
+     //      $("head").append(flickityJS);
+          
+     //      let html = '';
+          
+     //      $.ajax({
+     //        url: "/collections/shirts/products.json",
+     //        method: "GET",
+     //        dataType: "json",
+     //        success: function (data) {
+              
+              
+     //          let jsonData = data.products;
+              
+     //            html += `<div class="product__listing__slider">
+          //   <h2 class="slider-heading">We Recommend</h2>
+     //                      <div data-list-selectcallback class="custom-selectcallback ProductList ProductList--carousel Carousel" tabindex="0">`;
+              
+     //           jsonData.forEach((item, index) => {
+                  
+     //              let pro_price = (item.variants[0].price).replace(".00",'')
+     //            html +=  `<div class="Carousel__Cell jQueryEqualHeight">
+     //                           <div class="ProductItem">
+     //                                <div class="ProductItem__Wrapper">
+          //          <a href="/collections/shirts/products/${item.handle}" target="_blank" class="ProductItem__ImageWrapper ">
+     //                                      <div class="ProdctImage-wrap">
+     //                                        <img class="ProductItem__Image Image--fadeIn" src="${item.images[0].src}" alt="${item.title}">
+     //                                      </div>
+     //                                    </a>
+     //                                    <div class="ProductItem__Info">
+     //                                      <h2 class="ProductItem__Title Heading">
+          //            <a target="_blank" href="/collections/shirts/products/${item.handle}" >${item.title}</a>
+     //                                      </h2>
+          //            <span class="ProductItem__Price Price Text--subdued" >RS. ${pro_price}</span>
+     //                                    </div>
+     //                                  </div>
+     //                            </div>
+     //                        </div>`
+     //                  if(index == 20){
+     //                   return false;
+     //                  }
+          // });
+              
+     //             html +=  `</div>
+     //                    </div>`;
+                
+     //          $(".thank-you__additional-content").append(html);
+              
+     //          setTimeout(function(){
+
+     //            $('.jQueryEqualHeight').jQueryEqualHeight('.ProductItem');
+     //            $('.jQueryEqualHeight').jQueryEqualHeight();
+
+     //            $('.product__listing__slider [data-list-selectcallback]').flickity({
+     //              prevNextButtons: true,
+     //              pageDots: false,
+     //              wrapAround: true,
+     //              contain: true,
+     //              cellAlign: 'left',
+     //              dragThreshold: 8,
+     //              groupCells: true,
+     //              adaptiveHeight: true,
+     //              lazyLoad: 2,
+     //              arrowShape: { x0: 10,x1: 60, y1: 50,x2: 70, y2: 40,x3: 30}
+     //            });
+     //            $('.product__listing__slider').css({
+     //              'visibility': 'visible',
+     //              'opacity': '1'
+     //            });
+
+     //          },1000);
+              
+     //        },
+     //      });
+          
+     //    }
+        
+        if(Shopify.Checkout.step == "contact_information"){
+          /* prevent user to add only number in phone field */
+          $(document).on('keypress', '#checkout_shipping_address_phone', function(e){
+            var charCode = (e.which) ? e.which : event.keyCode    
+            if (String.fromCharCode(charCode).match(/[^0-9]/g)){
+              return false;
+            } 
+          });
+          if($("#checkout_contact_phone").length > 0){
+            $("#checkout_contact_phone").on('change',function(){
+              var $this = $(this);
+              var mobNum = $(this).val();
+              var filter = /^\d*(?:\.\d{0,1,2})?$/;
+
+              if (filter.test(mobNum)) {
+                if(mobNum.length==10){
+                  $this.removeClass("phone_error");
+                  $("#checkout_shipping_address_phone").val(mobNum);
+                  
+                  let commonAPI = `https://frenchcrownerp.com/miscellaneous/customer_by_phone?phone=${mobNum}&shopify_domain=french-crown-dress-sharp.myshopify.com`;
+                  var settings = {
+                    "url": commonAPI,
+                    "method": "GET",
+                    "timeout": 0,
+                  };
+
+                  $.ajax(settings).done(function (response) {
+                    if(response.customer){
+                      let customer_details = response.customer;
+                      if(customer_details.addresses.length > 0){
+                        let _default_address = customer_details.default_address;
+
+                        let first_name = $("#checkout_shipping_address_first_name");
+                        let last_name = $("#checkout_shipping_address_last_name");
+                        let address1 = $("#checkout_shipping_address_address1");
+                        let address2 = $("#checkout_shipping_address_address2");
+                        let city = $("#checkout_shipping_address_city");
+                        let province = $("#checkout_shipping_address_province");
+                        let zip = $("#checkout_shipping_address_zip");
+                        let phone_number = $("#checkout_shipping_address_phone");
+
+                        if(first_name.val() == "" || first_name.val() == null){
+                          if(_default_address.first_name){
+                            first_name.val(_default_address.first_name);
+                          }
+                        }
+                        if(last_name.val() == "" || last_name.val() == null){
+                          if(_default_address.last_name){
+                            last_name.val(_default_address.last_name);
+                          }
+                        }
+                        if(address1.val() == "" || address1.val() == null){
+                          if(_default_address.address1){
+                            address1.val(_default_address.address1);
+                          }
+                        }
+                        if(address2.val() == "" || address2.val() == null ){
+                          if(_default_address.address2){
+                            address2.val(_default_address.address2);
+                          }
+                        }
+                        if(city.val() == "" || city.val() == null){
+                          if(_default_address.city){
+                            city.val(_default_address.city);
+                          }
+                        }
+                        if(province.val() == "" || province.val() == null){
+                          if(_default_address.province){
+                             province.find("option").filter(function() {
+                              //may want to use $.trim in here
+                              return $(this).text() == _default_address.province;
+                            }).prop('selected', true);
+                          }
+                        }
+                        if(zip.val() == "" || zip.val() == null){
+                          if(_default_address.zip){
+                            zip.val(_default_address.zip);
+                          }
+                        }
+                        if(phone_number.val() == "" || phone_number.val() == null){
+                          if(_default_address.phone){
+                            phone_number.val(_default_address.phone);
+                          }
+                        }
+
+                      }
+                    }
+                  });
+                  
+                  
+                } else {
+                  $this.addClass("phone_error");
+                  return false;
+                }
+              }
+              else {
+                $this.addClass("phone_error");
+                return false;
+              }
+            });
+          }
+          
+          let emailField = document.querySelector("#checkout_email");
+          if(emailField){
+            emailField.addEventListener("change",(event) => {
+
+              let emailValue = event.target.value.toLowerCase().trim();
+              const validateEmail = _validateEmail(emailValue);
+
+              if(validateEmail != null){
+
+                let commonAPI = `https://frenchcrownerp.com/miscellaneous/customer_by_email?email=${emailValue}&shopify_domain=french-crown-dress-sharp.myshopify.com`;
+                var settings = {
+                  "url": commonAPI,
+                  "method": "GET",
+                  "timeout": 0,
+                };
+                $.ajax(settings).done(function (response) {
+                  if(response.customer){
+                    let customer_details = response.customer;
+                    if(customer_details.addresses.length > 0){
+                      let _default_address = customer_details.default_address;
+
+                      let first_name = $("#checkout_shipping_address_first_name");
+                      let last_name = $("#checkout_shipping_address_last_name");
+                      let address1 = $("#checkout_shipping_address_address1");
+                      let address2 = $("#checkout_shipping_address_address2");
+                      let city = $("#checkout_shipping_address_city");
+                      let province = $("#checkout_shipping_address_province");
+                      let zip = $("#checkout_shipping_address_zip");
+                      let phone_number = $("#checkout_shipping_address_phone");
+
+                      if(first_name.val() == "" || first_name.val() == null){
+                        if(_default_address.first_name){
+                          first_name.val(_default_address.first_name);
+                        }
+                      }
+                      if(last_name.val() == "" || last_name.val() == null){
+                        if(_default_address.last_name){
+                          last_name.val(_default_address.last_name);
+                        }
+                      }
+                      if(address1.val() == "" || address1.val() == null){
+                        if(_default_address.address1){
+                          address1.val(_default_address.address1);
+                        }
+                      }
+                      if(address2.val() == "" || address2.val() == null ){
+                        if(_default_address.address2){
+                          address2.val(_default_address.address2);
+                        }
+                      }
+                      if(city.val() == "" || city.val() == null){
+                        if(_default_address.city){
+                          city.val(_default_address.city);
+                        }
+                      }
+                      if(province.val() == "" || province.val() == null){
+                        if(_default_address.province){
+                           province.find("option").filter(function() {
+                            //may want to use $.trim in here
+                            return $(this).text() == _default_address.province;
+                          }).prop('selected', true);
+                        }
+                      }
+                      if(zip.val() == "" || zip.val() == null){
+                        if(_default_address.zip){
+                          zip.val(_default_address.zip);
+                        }
+                      }
+                      if(phone_number.val() == "" || phone_number.val() == null){
+                        if(_default_address.phone){
+                          phone_number.val(_default_address.phone);
+                        }
+                      }
+
+                    }
+                  }
+                });
+
+              }
+
+            });
+      if(emailField.value != ""){
+              setTimeout(function(){
+                const event = new Event('change');  
+                emailField.dispatchEvent(event);
+              },3000);
+            }
+          }
+        }
+
+        
+        function _validateEmail(email){
+          return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+        }
+        
+      })
+      
+      function getDiscount(){
+        $('form[data-payment-form] .input-radio:first').prop('checked',true).click();
+        $('.fc_overlay').hide();
+        $('.fc_popupBox').hide();
+        $('body').removeClass('fc_body');
+      }
+      
+    </script>
+    
+    {{ tracking_code }}
+  </body>
+</html>

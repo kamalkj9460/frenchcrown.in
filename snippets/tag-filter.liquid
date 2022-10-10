@@ -1,0 +1,1264 @@
+<!--  Size   -->
+      
+      {%- if collection.handle contains 'tshirts' -%}
+        {%- if section.settings.tshirts_size_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand shirt-size">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                {%- assign  size_tag_lists = section.settings.tshirts_size_taglist | split: ','  -%}
+                {%- for tag_name in size_tag_lists -%}
+
+                  {%- assign tag_value = tag_name | handleize -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+
+                   <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                    </li>
+
+                {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- elsif collection.handle contains 'shirts' -%}
+        {%- if section.settings.shirt_size_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand shirt-size">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                {%- assign  size_tag_lists = section.settings.shirt_size_taglist | split: ','  -%}
+                {%- for tag_name in size_tag_lists -%}
+
+                  {%- assign tag_value = tag_name | handleize -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+
+                   <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                    </li>
+
+                {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {% endif %}
+
+      {%- if collection.handle contains 'boxers' and section.settings.boxer_size_taglist != empty -%}
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand boxer-size">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+                {%- assign  size_tag_lists = section.settings.boxer_size_taglist | split: ','  -%}
+                {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                {%- if tag == tag_value -%}
+                {%- assign flag = true -%}
+                {%- endif -%}
+                {%- endfor -%}
+
+
+                <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                  <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                    {{- tag_name -}}
+                  </button>
+                </li>
+
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {%- if collection.handle contains 'lounge-shorts'and section.settings.lounge_shorts_size_taglist != empty -%}
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand boxer-size">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+                {%- assign  size_tag_lists = section.settings.lounge_shorts_size_taglist | split: ','  -%}
+                {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                {%- if tag == tag_value -%}
+                {%- assign flag = true -%}
+                {%- endif -%}
+                {%- endfor -%}
+
+
+                <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                  <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                    {{- tag_name -}}
+                  </button>
+                </li>
+
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {%- if collection.handle contains 'waistcoats' -%}
+       	{%- if section.settings.waistcoat_taglist != empty -%}
+         	<div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                {%- assign  waistcoat_taglist = section.settings.waistcoat_taglist | split: ','  -%}
+                {%- for tag_name in waistcoat_taglist -%}
+
+                  {%- assign tag_value = tag_name | handleize -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                  </li>
+                {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+      	{%- endif -%}
+      {% endif %}
+
+      {%- if collection.handle contains 'pants' -%}
+      	{%- if section.settings.trousers_size_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand trouser-size">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                {%- assign  size_tag_lists = section.settings.trousers_size_taglist | split: ','  -%}
+                {%- for tag_name in size_tag_lists -%}
+
+                  {%- assign tag_value = tag_name | handleize -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name -}}
+                    </button>
+                  </li>
+                  
+                {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {% endif %}
+
+      {%- if collection.handle == 'shorts' and section.settings.shorts_size_taglist != empty-%}
+      	<div class="Collapsible Collapsible--padded Collapsible--autoExpand shorts-size">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+              {%- assign  size_tag_lists = section.settings.shorts_size_taglist | split: ','  -%}
+              {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                  </li>
+
+                  
+
+              {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if collection.handle contains 'jeans'and section.settings.jeans_size_taglist != empty -%}       
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand jeans-size">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+              {%- assign  size_tag_lists = section.settings.jeans_size_taglist | split: ','  -%}
+              {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                  </li>                      
+
+              {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>           
+    	{%- endif -%}
+
+    	{%- if collection.handle contains 'footwear'and section.settings.footwear_size_taglist != empty -%}       
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand footwear-size">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+              {%- assign  size_tag_lists = section.settings.footwear_size_taglist | split: ','  -%}
+              {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                  </li>                      
+
+              {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>           
+    	{%- endif -%}
+       {%- if collection.handle contains 'kurtas' and section.settings.kurta_size_taglist != empty -%}       
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+              {%- assign  size_tag_lists = section.settings.kurta_size_taglist | split: ','  -%}
+              {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                  </li>                      
+
+              {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>           
+    	{%- endif -%}
+
+       {%- if collection.handle contains 'belts' and section.settings.belts_size_taglist != empty -%}       
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+              {%- assign  size_tag_lists = section.settings.belts_size_taglist | split: ','  -%}
+              {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                  </li>                      
+
+              {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>           
+    	{%- endif -%}
+
+      {%- if collection.handle contains 'suits' or collection.handle contains 'blazers' and section.settings.blazer_size_taglist != empty -%}       
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand jeans-size">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+           {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+                {%- assign  size_tag_lists = section.settings.blazer_size_taglist | split: ','  -%}
+                {%- for tag_name in size_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                {%- assign flag = false -%}
+                {%- for tag in current_tags -%}
+                {%- if tag == tag_value -%}
+                {%- assign flag = true -%}
+                {%- endif -%}
+                {%- endfor -%}
+
+                <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                  <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                    {{- tag_name -}}
+                  </button>
+                </li>                      
+
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div> 
+    	{%- endif -%}
+
+        {%- if collection.handle contains 'sale' or  collection.handle == 'new' -%}
+        	<div class="Collapsible Collapsible--padded Collapsible--autoExpand sale-size">
+                <button type="button" class="Collapsible__Button Heading u-h6 phone" data-action="toggle-collapsible" aria-expanded="false">
+                  Size <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.shirt_size_taglist | split: ','  -%}
+                      <span class="Heading u-h6">Shirt Size</span>
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                      {%- assign  size_tag_lists = section.settings.trousers_size_taglist | split: ','  -%}
+                      {% if section.settings.trousers_size_taglist != blank %}
+                       <span class="Heading u-h6">Pant Size</span>
+                      {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                      {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                      {%- endif -%}
+                      {%- endfor -%}
+
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+
+                      {%- endfor -%}
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              
+<!--                 <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false" style="">
+                  Trouser Size <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.trousers_size_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+                      
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div> -->
+            </div>
+        
+          {%- endif -%}
+
+      {%- include 'price-filter' -%}
+      {%- include 'collar-filter' -%}
+    <!--  Categories  -->
+    {% comment %}
+        {%- if quick_links != empty -%}
+            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                {{- quick_links.title | escape -}} <span class="Collapsible__Plus"></span>
+              </button>
+
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- for link in quick_links.links -%}
+                      <li class="Linklist__Item {% if link.active %}is-selected{% endif %}">
+                        <a href="{{ link.url }}" class="Link Link--primary Text--subdued {% if link.active %}is-active{% endif %}">{{ link.title | escape }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+    {% endcomment %}
+    {%- if collection.handle == 'sale' or  collection.handle == 'new' and section.settings.category_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              Category <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                  {%- assign  category_taglist = section.settings.category_taglist | split: ','  -%}
+                  {%- for tag_name in category_taglist -%}
+
+                  {%- assign tag_value = tag_name | handleize  -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                  {%- assign flag = true -%}
+                  {%- endif -%}
+                  {%- endfor -%}
+
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name | capitalize | replace: '_',' ' -}}
+                    </button>
+                  </li>
+
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+   
+      {%- include 'fabric-filter' -%}
+        {%- include 'pattern-filter' -%}
+      {%- include 'shirts-occasion-sleeves' -%}
+
+    {%- if collection.handle contains 'blazers' and section.settings.blazer_occation_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              Occasion <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                  {%- assign  blazer_occation_taglist = section.settings.blazer_occation_taglist | split: ','  -%}
+                  {%- for tag_name in blazer_occation_taglist -%}
+
+                  {%- assign tag_value = tag_name | handleize  -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                  {%- assign flag = true -%}
+                  {%- endif -%}
+                  {%- endfor -%}
+
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name | capitalize | replace: '_',' ' -}}
+                    </button>
+                  </li>
+
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+
+    {%- if collection.handle contains 'footware' and section.settings.blazer_occation_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+            <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              Occasion <span class="Collapsible__Plus"></span>
+            </button>
+
+            <div class="Collapsible__Inner">
+              <div class="Collapsible__Content">
+                <ul class="Linklist">
+                  {%- assign  blazer_occation_taglist = section.settings.blazer_occation_taglist | split: ','  -%}
+                  {%- for tag_name in blazer_occation_taglist -%}
+
+                  {%- assign tag_value = tag_name | handleize  -%}
+                  {%- assign flag = false -%}
+                  {%- for tag in current_tags -%}
+                  {%- if tag == tag_value -%}
+                  {%- assign flag = true -%}
+                  {%- endif -%}
+                  {%- endfor -%}
+
+
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name | capitalize | replace: '_',' ' -}}
+                    </button>
+                  </li>
+
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+         
+     {%- if section.settings.tshirt_color_taglist != empty and collection.handle == 'tshirts' -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  tshirt_color_taglist = section.settings.tshirt_color_taglist | split: ','  -%}
+                    {%- for tag_name in tshirt_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>  
+
+         {%- elsif section.settings.shirt_color_taglist != empty and collection.handle contains 'shirts' or collection.handle contains 'accessories' or collection.handle contains 'kurtas' -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  shirt_color_taglist = section.settings.shirt_color_taglist | split: ','  -%}
+                    {%- for tag_name in shirt_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>  
+      
+    
+          {%- elsif section.settings.boxer_color_taglist != empty and collection.handle == 'boxers'-%}
+            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+              </button>
+
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- assign  boxer_color_taglist = section.settings.boxer_color_taglist | split: ','  -%}
+                    {%- for tag_name in boxer_color_taglist -%}
+
+                    {%- assign tag_value = tag_name | handleize -%}
+                    {%- assign flag = false -%}
+                    {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+
+
+                    <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div>
+        
+    
+        {%- elsif collection.handle contains 'waistcoats' and section.settings.waistcoat_color_taglist != empty -%}
+           <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  waistcoat_color_taglist = section.settings.waistcoat_color_taglist | split: ','  -%}
+                    {%- for tag_name in waistcoat_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+                      
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            
+    
+          {%- elsif collection.handle == 'lounge-shorts' and section.settings.lounge_shorts_color_taglist != empty -%}
+            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  lounge_shorts_color_taglist = section.settings.lounge_shorts_color_taglist | split: ','  -%}
+                    {%- for tag_name in lounge_shorts_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+                      
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          
+    
+          {%- elsif collection.handle == 'lounge-pants' and section.settings.lounge_pants_color_taglist != empty -%}
+            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  lounge_pants_color_taglist = section.settings.lounge_pants_color_taglist | split: ','  -%}
+                    {%- for tag_name in lounge_pants_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+                      
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          
+    
+        {%- elsif collection.handle contains 'pants' and section.settings.trousers_color_taglist != empty -%}
+  
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  trousers_color_taglist = section.settings.trousers_color_taglist | split: ','  -%}
+                    {%- for tag_name in trousers_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+                      
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+           
+        {%- elsif collection.handle == 'shorts' and section.settings.shorts_color_taglist != empty-%}
+      
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  shorts_color_taglist = section.settings.shorts_color_taglist | split: ','  -%}
+                    {%- for tag_name in shorts_color_taglist -%}
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                        <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+           
+        {%- elsif collection.handle contains 'sale' or collection.handle == 'new' and section.settings.sale_color_taglist != empty -%}
+           <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  shorts_color_taglist = section.settings.sale_color_taglist | split: ','  -%}
+                    {%- for tag_name in shorts_color_taglist -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                        {%- if tag == tag_value -%}
+                          {%- assign flag = true -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                        <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        
+          {%- elsif collection.handle contains 'jeans' and section.settings.jeans_color_taglist != blank -%}
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                Color <span class="Collapsible__Plus"></span>
+              </button>
+
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- assign  color_tag_lists = section.settings.jeans_color_taglist | split: ','  -%}
+                    {%- for tag_name in color_tag_lists -%}
+
+                    {%- assign tag_value = tag_name | handleize -%}
+                    {%- assign flag = false -%}
+                    {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+                    <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div>  
+      
+      {%- elsif collection.handle contains 'wallets' and section.settings.wallets_color_taglist != blank -%}
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                Color <span class="Collapsible__Plus"></span>
+              </button>
+
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- assign  color_tag_lists = section.settings.wallets_color_taglist | split: ','  -%}
+                    {%- for tag_name in color_tag_lists -%}
+
+                    {%- assign tag_value = tag_name | handleize -%}
+                    {%- assign flag = false -%}
+                    {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+                    <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div> 
+
+          {%- elsif collection.handle contains 'jeans' and section.settings.wallets_color_taglist != blank -%}
+              <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  Color <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                      {%- assign  color_tag_lists = section.settings.wallets_color_taglist | split: ','  -%}
+                      {%- for tag_name in color_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                      {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                      {%- endif -%}
+                      {%- endfor -%}
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          {%- elsif collection.handle contains 'footwear' and section.settings.wallets_color_taglist != blank -%}
+              <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  Color <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                      {%- assign  color_tag_lists = section.settings.wallets_color_taglist | split: ','  -%}
+                      {%- for tag_name in color_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                      {%- assign flag = false -%}
+                      {%- for tag in current_tags -%}
+                      {%- if tag == tag_value -%}
+                      {%- assign flag = true -%}
+                      {%- endif -%}
+                      {%- endfor -%}
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>  
+
+
+          {%- elsif collection.handle contains 'suits' or collection.handle contains 'blazers' and section.settings.suit_color_taglist != blank -%}
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                Color <span class="Collapsible__Plus"></span>
+              </button>
+
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- assign  color_tag_lists = section.settings.suit_color_taglist | split: ','  -%}
+                    {%- for tag_name in color_tag_lists -%}
+
+                    {%- assign tag_value = tag_name | handleize -%}
+                    {%- assign flag = false -%}
+                    {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+                    <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div> 
+        {%- endif -%}
+
+          {%- if section.settings.tshirt_neck_taglist != empty and collection.handle contains 'tshirts' -%}
+            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                Neck <span class="Collapsible__Plus"></span>
+              </button>
+
+              <div class="Collapsible__Inner">
+                <div class="Collapsible__Content">
+                  <ul class="Linklist">
+                    {%- assign  tshirt_neck_taglist = section.settings.tshirt_neck_taglist | split: ','  -%}
+                    {%- for tag_name in tshirt_neck_taglist -%}
+
+                    {%- assign tag_value = tag_name | handleize -%}
+                    {%- assign flag = false -%}
+                    {%- for tag in current_tags -%}
+                    {%- if tag == tag_value -%}
+                    {%- assign flag = true -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+
+
+                    <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div> 
+    {%- endif -%}
+
+    {%- if section.settings.cufflink_color_taglist != empty and collection.handle == 'accessories' -%}
+        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+              {{ section.settings.suit_cufflink_color_title }}  <span class="Collapsible__Plus"></span>
+          </button>
+
+          <div class="Collapsible__Inner">
+            <div class="Collapsible__Content">
+              <ul class="Linklist">
+                {%- assign  color_tag_lists = section.settings.cufflink_color_taglist | split: ','  -%}
+                {%- for tag_name in color_tag_lists -%}
+
+                {%- assign tag_value = tag_name | handleize -%}
+                
+                <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                  <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                    {{- tag_name -}}
+                  </button>
+                </li>
+
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div> 
+       {%- endif -%}
+          {%- if collection.handle contains 'face-masks' -%}
+             {%- if section.settings.mask_color_taglist != empty -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.mask_color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.mask_color_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {%- endif -%}
+        {%- if section.settings.mask_pack_taglist != empty -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.mask_pack_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.mask_pack_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {%- endif -%}
+        {%- if section.settings.mask_fabric_taglist != empty -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.mask_fabric_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.mask_fabric_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {%- endif -%}
+            {%- endif -%}
+
+      {%- if collection.handle contains 'belts' -%}
+             {%- if section.settings.belt_type_taglist != empty -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.belt_type_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.belt_type_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {%- endif -%}
+        {%- if section.settings.belt_color_taglist != empty -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.belt_color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.belt_color_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {%- endif -%}
+       
+            {%- endif -%}
+

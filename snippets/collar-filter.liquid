@@ -1,0 +1,35 @@
+<!--  Collar  -->
+{%- unless collection.handle contains 'tshirts' -%}
+  {%- if collection.handle contains 'shirts' and section.settings.collar_taglist != empty -%}
+          <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+    <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+      {{ section.settings.collar_title }} <span class="Collapsible__Plus"></span>
+    </button>
+
+    <div class="Collapsible__Inner">
+      <div class="Collapsible__Content">
+        <ul class="Linklist">
+          {%- assign  collar_tag_lists = section.settings.collar_taglist | split: ','  -%}
+          {%- for tag_name in collar_tag_lists -%}
+
+          {%- assign tag_value = tag_name | handleize -%}
+          {%- assign flag = false -%}
+          {%- for tag in current_tags -%}
+          {%- if tag == tag_value -%}
+          {%- assign flag = true -%}
+          {%- endif -%}
+          {%- endfor -%}
+
+          <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+              {{- tag_name -}}
+            </button>
+          </li> 
+
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+{%- endunless -%}

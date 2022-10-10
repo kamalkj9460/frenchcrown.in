@@ -1,0 +1,96 @@
+<!--  Fabric  -->
+{%- unless collection.handle contains 'jeans' or collection.handle contains 'face-masks' or collection.handle contains 'belts' or collection.handle contains 'accessories' or collection.handle contains 'wallets' or collection.handle contains 'footwear' -%}
+  {%- if section.settings.fabric_taglist != empty -%}
+  <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+    <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+      {{ section.settings.fabric_title }} <span class="Collapsible__Plus"></span>
+    </button>
+
+    <div class="Collapsible__Inner">
+      <div class="Collapsible__Content">
+        <ul class="Linklist">
+          {%- assign  fabric_tag_lists = section.settings.fabric_taglist | split: ','  -%}
+          {%- for tag_name in fabric_tag_lists -%}
+            {%- assign tag_value = tag_name | handleize -%}
+            {%- assign flag = false -%}
+            {%- for tag in current_tags -%}
+              {%- if tag == tag_value -%}
+              {%- assign flag = true -%}
+              {%- endif -%}
+            {%- endfor -%}
+			{%- if collection.handle contains 'suits' %}
+            	{%- unless tag_value == 'tencel' -%}
+          			<li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+          		{% endunless %}
+            {%- elsif collection.handle contains 'lounge-pants' -%}
+          		{%- unless tag_value == 'wool' or tag_value == 'wool-blend' or tag_value == 'poly-viscose-rayon' or tag_value == 'terry-rayon' -%}
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name -}}
+                    </button>
+                  </li>
+				{%- endunless %}
+          	{%- elsif collection.handle contains 'pants' %}
+            	{%- unless tag_value == 'tencel' or tag_value == 'polyester' -%}
+          			<li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                        {{- tag_name -}}
+                      </button>
+                    </li>
+          		{% endunless %}
+          
+          	{%- elsif collection.handle contains 'blazers' -%}
+          		<li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                  <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                    {{- tag_name -}}
+                  </button>
+                </li>
+          
+            {%- elsif collection.handle contains 'waistcoats' -%}
+          		{%- unless tag_value == 'wool' or tag_value == 'wool-blend' or tag_value == 'polyester' -%}
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name -}}
+                    </button>
+                  </li>
+				{%- endunless %}
+                
+          	{%- elsif collection.handle contains 'tshirts' -%}
+          		{%- if tag_value == 'cotton' -%}
+          			{%- unless tag_value == 'polyester' -%}
+                      <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                        <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                          {{- tag_name -}}
+                        </button>
+                      </li>
+          			{%- endunless %}
+                {% endif %}
+            {%- elsif collection.handle contains 'sale' -%}
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name -}}
+                    </button>
+                  </li>
+            
+          	
+            {% else %}
+                {%- unless tag_value == 'poly-viscose-rayon' or tag_value == 'terry-rayon' or tag_value == 'wool' or tag_value == 'wool-blend' or tag_value == 'polyester' -%}
+                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                      {{- tag_name -}}
+                    </button>
+                  </li>
+                {%- endunless %}
+            {% endif %}
+
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+{%- endunless -%}
