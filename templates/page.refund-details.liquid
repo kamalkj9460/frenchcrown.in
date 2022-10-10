@@ -46,7 +46,7 @@
       shopify_domain: 'french-crown-dress-sharp.myshopify.com'
     }
     $.ajax({
-      url: 'https://frenchcrownerp.com/api/v1/return_orders/update_refund_details',
+      url: 'https://bgig.in/api/v1/return_orders/update_refund_details',
       type: 'POST',
       dataType: 'json',
       data: update_data,
@@ -69,7 +69,7 @@
   $( document ).ready(function() {
     $('#pageTitle').text($('#pageTitle').text() + '  for order ' + querystring('order'))
     $.ajax({
-      url: 'https://frenchcrownerp.com/api/v1/return_orders/refund_details',
+      url: 'https://bgig.in/api/v1/return_orders/refund_details',
       type: 'POST',
       dataType: 'json',
       data: {id: window.location.pathname.split("/").pop(), shopify_domain: 'french-crown-dress-sharp.myshopify.com'},

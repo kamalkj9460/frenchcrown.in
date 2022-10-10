@@ -1,6 +1,4 @@
-{%- if collection.handle contains 'tshirt' -%}
-  {%- assign price_tag_lists = section.settings.tshirt_price_taglist | split: ','  -%}
-{%- elsif collection.handle contains 'shirt' -%}
+{%- if collection.handle contains 'shirt' -%}
   {%- assign price_tag_lists = section.settings.shirt_price_taglist | split: ','  -%}
 {%- elsif collection.handle contains 'suit' -%}
   {%- assign price_tag_lists = section.settings.suit_price_taglist | split: ','  -%}

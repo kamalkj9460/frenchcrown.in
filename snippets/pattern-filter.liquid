@@ -227,7 +227,7 @@
                 </div>
               </div>
     		
-    	  {%- elsif collection.handle contains 'sale' or collection.handle == 'new' and section.settings.sale_pattern_taglist != empty -%}
+    	  {%- elsif collection.handle contains 'sale' and section.settings.sale_pattern_taglist != empty -%}
     			<div class="Collapsible Collapsible--padded Collapsible--autoExpand">
                 <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
                   {{ section.settings.pattern_title }} <span class="Collapsible__Plus"></span>

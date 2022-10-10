@@ -8,7 +8,7 @@
 
         {%- if section.settings.stack_images -%}
         <a href="#Image{{ media.id }}" data-image-id="{{ media.id }}" class="Product__SlideshowNavImage AspectRatio {% if forloop.first %}is-selected{% endif %}" style="--aspect-ratio: {{ media.aspect_ratio }}">
-          <img src="{{ media | img_url: '160x' }}">
+          <img src="{{ media | img_url: '120x' }}">
         </a>
         {%- else -%}
         <span data-image-id="{{ media.id }}" class="Product__SlideshowNavImage AspectRatio {% if forloop.first %}is-selected{% endif %}" style="--aspect-ratio: {{ media.aspect_ratio }}">

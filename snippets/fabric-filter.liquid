@@ -26,14 +26,7 @@
                       </button>
                     </li>
           		{% endunless %}
-            {%- elsif collection.handle contains 'lounge-pants' -%}
-          		{%- unless tag_value == 'wool' or tag_value == 'wool-blend' or tag_value == 'poly-viscose-rayon' or tag_value == 'terry-rayon' -%}
-                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
-                    <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
-                      {{- tag_name -}}
-                    </button>
-                  </li>
-				{%- endunless %}
+          
           	{%- elsif collection.handle contains 'pants' %}
             	{%- unless tag_value == 'tencel' or tag_value == 'polyester' -%}
           			<li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">

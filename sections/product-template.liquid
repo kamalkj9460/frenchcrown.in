@@ -84,7 +84,7 @@
               {% assign image_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
               {% if forloop.first == true %}
-                          <img class="Image--lazyLoaded lazy2 lazy3 Image--fadeIn"
+                          <img class="Image--lazyLoaded lazy2 lazy3"
                                src="{{ image | img_url: '480x' }}"
                                data-src="{{ image | img_url: '720x' }}"
                                data-mobsrc="{{ image | img_url: '480x' }}"
@@ -274,12 +274,10 @@
           {%- endif -%}
 
           <div class="simpl_product_drop_div"></div>
-  
           {%- assign todayDate = "now" | date: "%s" -%}
-          {%- assign saleTill = "2022-10-31 23:59" | date: "%s" -%}
+          {%- assign saleTill = "2022-09-30 23:59" | date: "%s" -%}
           {% if todayDate <= saleTill %}
-            <small class="offer-discount-element simpl-promotion" style="font-size:11px;color: #04d1c1;">
-    Get 15% cashback upto ₹ 750 on orders above Rs 2000 using Simpl at Checkout.</small>
+            <small style="font-size:11px;color:#04D1C1;"> Get 15% cashback upto &#8377; 750 on orders above &#8377; 2000 using Simpl at Checkout </small>
           {% endif %}
           
           <div id="zestmoney-widget-control"></div>

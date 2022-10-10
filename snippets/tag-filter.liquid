@@ -339,39 +339,6 @@
         </div>           
     	{%- endif -%}
 
-       {%- if collection.handle contains 'belts' and section.settings.belts_size_taglist != empty -%}       
-        <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
-          <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
-            {{ section.settings.size_title }} <span class="Collapsible__Plus"></span>
-          </button>
-
-          <div class="Collapsible__Inner">
-            <div class="Collapsible__Content">
-              <ul class="Linklist">
-              {%- assign  size_tag_lists = section.settings.belts_size_taglist | split: ','  -%}
-              {%- for tag_name in size_tag_lists -%}
-
-                {%- assign tag_value = tag_name | handleize -%}
-                {%- assign flag = false -%}
-                {%- for tag in current_tags -%}
-                  {%- if tag == tag_value -%}
-                    {%- assign flag = true -%}
-                  {%- endif -%}
-                {%- endfor -%}
-
-                  <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
-                      <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
-                        {{- tag_name -}}
-                      </button>
-                  </li>                      
-
-              {%- endfor -%}
-              </ul>
-            </div>
-          </div>
-        </div>           
-    	{%- endif -%}
-
       {%- if collection.handle contains 'suits' or collection.handle contains 'blazers' and section.settings.blazer_size_taglist != empty -%}       
         <div class="Collapsible Collapsible--padded Collapsible--autoExpand jeans-size">
           <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
@@ -405,7 +372,7 @@
         </div> 
     	{%- endif -%}
 
-        {%- if collection.handle contains 'sale' or  collection.handle == 'new' -%}
+        {%- if collection.handle contains 'sale' -%}
         	<div class="Collapsible Collapsible--padded Collapsible--autoExpand sale-size">
                 <button type="button" class="Collapsible__Button Heading u-h6 phone" data-action="toggle-collapsible" aria-expanded="false">
                   Size <span class="Collapsible__Plus"></span>
@@ -515,7 +482,7 @@
             </div>
           {%- endif -%}
     {% endcomment %}
-    {%- if collection.handle == 'sale' or  collection.handle == 'new' and section.settings.category_taglist != empty -%}
+    {%- if collection.handle == 'sale' and section.settings.category_taglist != empty -%}
           <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
             <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
               Category <span class="Collapsible__Plus"></span>
@@ -884,7 +851,7 @@
                 </div>
               </div>
            
-        {%- elsif collection.handle contains 'sale' or collection.handle == 'new' and section.settings.sale_color_taglist != empty -%}
+        {%- elsif collection.handle contains  'sale' and section.settings.sale_color_taglist != empty -%}
            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
                 <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
                   {{ section.settings.color_title }} <span class="Collapsible__Plus"></span>
@@ -1259,6 +1226,30 @@
                 </div>
               </div>
         {%- endif -%}
-       
+        {%- if section.settings.belt_color_taglist != empty -%}
+               <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
+                  {{ section.settings.belt_color_title }} <span class="Collapsible__Plus"></span>
+                </button>
+
+                <div class="Collapsible__Inner">
+                  <div class="Collapsible__Content">
+                    <ul class="Linklist">
+                    {%- assign  size_tag_lists = section.settings.belt_color_taglist | split: ','  -%}
+                    {%- for tag_name in size_tag_lists -%}
+
+                      {%- assign tag_value = tag_name | handleize -%}
+                       <li class="Linklist__Item {% if current_tags contains tag_value %}is-selected{% endif %}">
+                            <button type="button" class="Link Link--primary Text--subdued {% if current_tags contains tag_value %}is-active{% endif %}" data-tag="{{ tag_value }}" data-action="toggle-tag">
+                              {{- tag_name -}}
+                            </button>
+                        </li>
+
+                    {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {%- endif -%}
             {%- endif -%}
 

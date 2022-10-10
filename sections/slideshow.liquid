@@ -94,9 +94,7 @@
 			<div class="Slideshow__ImageContainer {% if block.settings.apply_overlay %}Image--contrast{% endif %} {% unless section.settings.show_fullscreen %}AspectRatio AspectRatio--withFallback{% endunless %}">
 				<video class="video-js Slideshow__Image hidden-mobile" 
 					loop
-					muted
 					preload="none"
-					autoplay
 					playsinline
 					data-setup='{}'>
     				<source src="{{ block.settings.video_mp4_link }}" type="video/mp4">
@@ -105,9 +103,7 @@
 
                 <video class="video-js Slideshow__Image hidden-desktop" 
 					loop
-					muted
 					preload="none"
-					autoplay
 					playsinline
 					data-setup='{}'>
                     <source src="{{ block.settings.mobile_video_mp4_link }}" type="video/mp4">
